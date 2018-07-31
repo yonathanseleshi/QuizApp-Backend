@@ -11,11 +11,19 @@ namespace QuizAppBackend.Controllers
     [Route("api/[controller]")]
     public class QuestionsController : Controller
     {
+        readonly QuizContext _context;
+
+        public QuestionsController(QuizContext context)
+        {
+            this._context = context;
+
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Question> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new Question[] { };
         }
 
         // GET api/values/5
@@ -27,8 +35,11 @@ namespace QuizAppBackend.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Question question)
+        public async void Post([FromBody]Question question)
         {
+
+            await _context.Questions.AddAsync(question);
+            await _context.SaveChangesAsync();
         }
 
         // PUT api/values/5
