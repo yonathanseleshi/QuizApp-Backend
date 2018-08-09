@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizAppBackend", "QuizAppBackend\QuizAppBackend.csproj", "{80937A03-C398-4F90-8CFA-51D27089C5DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizAppBackend", "QuizAppBackend\QuizAppBackend.csproj", "{80937A03-C398-4F90-8CFA-51D27089C5DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizAppAPI.Tests", "QuizAppAPI.Tests\QuizAppAPI.Tests.csproj", "{BD6F0790-639D-49B9-B2A9-045A9A26365D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{80937A03-C398-4F90-8CFA-51D27089C5DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80937A03-C398-4F90-8CFA-51D27089C5DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80937A03-C398-4F90-8CFA-51D27089C5DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD6F0790-639D-49B9-B2A9-045A9A26365D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6F0790-639D-49B9-B2A9-045A9A26365D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6F0790-639D-49B9-B2A9-045A9A26365D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6F0790-639D-49B9-B2A9-045A9A26365D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
