@@ -10,6 +10,8 @@ using QuizAppBackend.Models;
 namespace QuizAppBackend.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
+    [ApiController]
     public class QuestionsController : Controller
     {
         readonly QuizContext _context;
@@ -28,27 +30,48 @@ namespace QuizAppBackend.Controllers
             return _context.Questions;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{quizID}")]
+        public IEnumerable<Question> GetQuizQuestions([FromRoute] int quizId)
         {
 
-
-            var question = await _context.Questions.SingleOrDefaultAsync(x => x.ID == id);
-
-            if (question == null)
-            {
-
-                NotFound();
-            }
-
-            return Ok(question);
+            return _context.Questions.Where(q => q.QuizId == quizId);
         }
+
+        // GET api/values/5
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(int id)
+        //{
+
+
+        //    var question = await _context.Questions.SingleOrDefaultAsync(x => x.ID == id);
+
+        //    if (question == null)
+        //    {
+
+        //        NotFound();
+        //    }
+
+        //    return Ok(question);
+        //}
 
         // POST api/values
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]Question question)
+        public async Task<IActionResult> PostQuestion([FromBody] Question question)
         {
+
+            
+            var quizId = await _context.Quiz.SingleOrDefaultAsync(q => q.ID == question.QuizId);
+
+            if (quizId == null)
+            {
+                return NotFound();
+            }
+            
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             await _context.Questions.AddAsync(question);
             await _context.SaveChangesAsync();
